@@ -1,1 +1,5 @@
 https://github.com/tavildar/Polar
+
+Encoding Packet Size k depends on parameter d. We have split input data in to packets of size k in matlab code and save k globally for decoding!
+
+Call Matlab from Python: https://in.mathworks.com/help/matlab/matlab_external/call-matlab-functions-from-python.html
