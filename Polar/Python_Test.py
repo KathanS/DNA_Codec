@@ -1,4 +1,3 @@
-import sys
 import matlab.engine
 
 eng = matlab.engine.start_matlab()
