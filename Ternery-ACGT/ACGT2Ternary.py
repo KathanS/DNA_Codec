@@ -6,11 +6,8 @@ map = {
     'T': {'A':'0','C':'1','G':'2'}
 }
 
-def TernaryToACGT(s: str):
+def acgt2ternary(s: str):
     t = first[s[0]]
     for i in range(1, len(s)):
         t = t + map[s[i-1]][s[i]]
     return t
-
-if __name__ == "__main__":
-    print(TernaryToACGT("ACTCTG"))

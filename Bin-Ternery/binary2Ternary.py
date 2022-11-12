@@ -1,4 +1,4 @@
-def binaryToTernary(s: str):
+def binary2ternary(s: str):
     t = f'{s[0]}'
     for i in range(1,len(s)):
         t += str(int(s[i])+int(s[i-1]))
