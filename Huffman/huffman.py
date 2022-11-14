@@ -1,9 +1,9 @@
 
 # A Huffman Tree Node
 class Node:
-    def __init__(self, prob, symbol, left=None, right=None):
-        # probability of symbol
-        self.prob = prob
+    def __init__(self, freq, symbol, left=None, right=None):
+        # freqability of symbol
+        self.freq = freq
 
         # symbol 
         self.symbol = symbol
@@ -34,8 +34,8 @@ def Calculate_Codes(node, val=''):
          
     return codes        
 
-""" A helper function to calculate the probabilities of symbols in given data"""
-def Calculate_Probability(data):
+""" A helper function to calculate the freqabilities of symbols in given data"""
+def Calculate_freqability(data):
     symbols = dict()
     for element in data:
         if symbols.get(element) == None:
@@ -54,35 +54,24 @@ def Output_Encoded(data, coding):
     string = ''.join([str(item) for item in encoding_output])    
     return string
         
-""" A helper function to calculate the space difference between compressed and non compressed data"""    
-def Total_Gain(data, coding):
-    before_compression = len(data) * 8 # total bit space to stor the data before compression
-    after_compression = 0
-    symbols = coding.keys()
-    for symbol in symbols:
-        count = data.count(symbol)
-        after_compression += count * len(coding[symbol]) #calculate how many bit is required for that symbol in total
-    print("Space usage before compression (in bits):", before_compression)    
-    print("Space usage after compression (in bits):",  after_compression)           
-
 def Huffman_Encoding(data):
-    symbol_with_probs = Calculate_Probability(data)
-    symbols = symbol_with_probs.keys()
-    probabilities = symbol_with_probs.values()
+    symbol_with_freqs = Calculate_freqability(data)
+    symbols = symbol_with_freqs.keys()
+    freqabilities = symbol_with_freqs.values()
     print("symbols: ", symbols)
-    print("probabilities: ", probabilities)
+    print("freqabilities: ", freqabilities)
     
     nodes = []
     
-    # converting symbols and probabilities into huffman tree nodes
+    # converting symbols and freqabilities into huffman tree nodes
     for symbol in symbols:
-        nodes.append(Node(symbol_with_probs.get(symbol), symbol))
+        nodes.append(Node(symbol_with_freqs.get(symbol), symbol))
     
     while len(nodes) > 1:
-        # sort all the nodes in ascending order based on their probability
-        nodes = sorted(nodes, key=lambda x: x.prob)
+        # sort all the nodes in ascending order based on their freqability
+        nodes = sorted(nodes, key=lambda x: x.freq)
         # for node in nodes:  
-        #      print(node.symbol, node.prob)
+        #      print(node.symbol, node.freq)
     
         # pick 2 smallest nodes
         right = nodes[0]
@@ -92,7 +81,7 @@ def Huffman_Encoding(data):
         right.code = 1
     
         # combine the 2 smallest nodes to create new node
-        newNode = Node(left.prob+right.prob, left.symbol+right.symbol, left, right)
+        newNode = Node(left.freq+right.freq, left.symbol+right.symbol, left, right)
     
         nodes.remove(left)
         nodes.remove(right)
@@ -100,7 +89,6 @@ def Huffman_Encoding(data):
             
     huffman_encoding = Calculate_Codes(nodes[0])
     print("symbols with codes", huffman_encoding)
-    Total_Gain(data, huffman_encoding)
     encoded_output = Output_Encoded(data,huffman_encoding)
     return encoded_output, nodes[0]  
     
