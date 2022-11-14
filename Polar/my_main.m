@@ -16,12 +16,12 @@ A = (f==1/2);
 k = sum(A);
 rate = k/N;
 
-input_bits = zeros(1,10000);
+input_bits = [1 1 0 0 1 1 0 1 0 1 0 1 1 0 1 1 1 1 0 1 1 1 1 1 0 1 0 0 0 0 1 0 0 1 1 0 0];
 input_length = size(input_bits,2);
 output_bits = ones(1,input_length);
 
 if (mod(input_length,k) ~= 0)
-    input_bits = [input_bits,zeros(1,mod(input_length,k))];
+    input_bits = [input_bits,zeros(1,k - mod(input_length,k))];
     input_length = size(input_bits,2);
     output_bits = zeros(1,input_length);
 end
