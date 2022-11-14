@@ -4,13 +4,10 @@ class Node:
     def __init__(self, freq, symbol, left=None, right=None):
         # freqability of symbol
         self.freq = freq
-
         # symbol 
         self.symbol = symbol
-
         # left node
         self.left = left
-
         # right node
         self.right = right
 
@@ -23,7 +20,7 @@ codes = dict()
 def Calculate_Codes(node, val=''):
     # huffman code for current node
     newVal = val + str(node.code)
-
+    
     if(node.left):
         Calculate_Codes(node.left, newVal)
     if(node.right):
@@ -59,7 +56,7 @@ def Huffman_Encoding(data):
     symbols = symbol_with_freqs.keys()
     freqabilities = symbol_with_freqs.values()
     print("symbols: ", symbols)
-    print("freqabilities: ", freqabilities)
+    print("freq: ", freqabilities)
     
     nodes = []
     
@@ -68,11 +65,8 @@ def Huffman_Encoding(data):
         nodes.append(Node(symbol_with_freqs.get(symbol), symbol))
     
     while len(nodes) > 1:
-        # sort all the nodes in ascending order based on their freqability
+        # sort all the nodes in ascending order based on their frequency
         nodes = sorted(nodes, key=lambda x: x.freq)
-        # for node in nodes:  
-        #      print(node.symbol, node.freq)
-    
         # pick 2 smallest nodes
         right = nodes[0]
         left = nodes[1]
