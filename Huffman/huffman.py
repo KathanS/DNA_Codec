@@ -1,31 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@njshah301 
-YCAyca
-/
-Data-Structures-and-Algorithms-with-Python
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Data-Structures-and-Algorithms-with-Python/Huffman_Encoding/huffman.py /
-@YCAyca
-YCAyca Update huffman.py
-…
-Latest commit 732103b on Aug 12, 2021
- History
- 1 contributor
-142 lines (109 sloc)  4.29 KB
 
 # A Huffman Tree Node
 class Node:
@@ -161,25 +133,8 @@ print("Decoded Output", Huffman_Decoding(encoding,tree))
 
 
 """ Second Test """
-
 # f = open("demofile.txt", "r")
 
 # data = f.read()
 # print(data)
 # Huffman_Encoding(data)
-
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Data-Structures-and-Algorithms-with-Python/huffman.py at main · YCAyca/Data-Structures-and-Algorithms-with-Python
