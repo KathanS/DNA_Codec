@@ -1,6 +1,6 @@
 % Setup code parameters
 
-function output_bits=encodePolar(input_bits)
+function [output_encoded_bits,output_decoded_bits]=encodePolar(input_bits)
     n = 12; N = 2^n;
     e = 0.1; p = 0.1;
     d = 0.5; bec = 0; % as you increase d rate increases! but also rate of error, although for no channel error rate = 0 always!
@@ -32,10 +32,10 @@ function output_bits=encodePolar(input_bits)
         u(A) = input_bits(:,(k*(i-1)+1):(k*i));
         x = polar_transform(u);
     
-        y = x; % no channel!
-    
+        y = x; % no channel
+        output_encoded_bits=x
         % Decode and compute error rate for info bits
         [uhat,xhat] = polar_decode(y,f);
-        output_bits(:,(k*(i-1)+1):(k*i)) = uhat(A);
+        output_decoded_bits(:,(k*(i-1)+1):(k*i)) = uhat(A);
         biterr(i) = mean(uhat(A)~=u(A));
     end
