@@ -10,7 +10,7 @@ def encode(bits):
     # bits: input bits
     # return: encoded bits
     input_text= bits
-    [encoded_output,decoded_output] = eng.encoderPolar(matlab.int8(input_text),nargout=2)
+    [encoded_output,decoded_output] = eng.codecPolar(matlab.int8(input_text),nargout=2)
     encoded_output =[[int(num) for num in x] for x in encoded_output]
     print(encoded_output)
     eng.quit()
