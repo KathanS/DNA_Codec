@@ -1,4 +1,5 @@
 # A simple script to calculate BMI
+from pywebio import *
 from pywebio.input import input, FLOAT
 from pywebio.output import put_text, put_markdown, put_scrollable, put_scope
 
@@ -40,7 +41,5 @@ def main():
     put_markdown('**Ternery to ACGT**')
     put_scrollable(put_scope('scrollable7'), height=100, keep_bottom=True)
     put_text(ACGT, scope='scrollable7')
-    
 
-if __name__ == '__main__':
-    main()
+start_server(main, port=8080, remote_access=True)
