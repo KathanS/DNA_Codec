@@ -14,4 +14,5 @@ def Huffman_Decoding(encoded_data, huffman_tree):
             huffman_tree = tree_head
         
     string = ''.join([str(item) for item in decoded_output])
+    
     return string

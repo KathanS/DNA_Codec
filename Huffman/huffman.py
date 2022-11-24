@@ -1,4 +1,4 @@
-
+from Pickle import *
 # A Huffman Tree Node
 class Node:
     def __init__(self, freq, symbol, left=None, right=None):
@@ -110,6 +110,8 @@ def Huffman_Decoding(encoded_data, huffman_tree):
 data = "AAAAAAABCCCCCCDDEEEEE"
 print(data)
 encoding, tree = Huffman_Encoding(data)
+fileName = "Huffman_encoder.pkl"
+create_pickle(fileName,encoding)
 print("Encoded output", encoding)
 print("Decoded Output", Huffman_Decoding(encoding,tree))
 

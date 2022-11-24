@@ -10,4 +10,6 @@ def acgt2ternary(s: str):
     t = first[s[0]]
     for i in range(1, len(s)):
         t = t + map[s[i-1]][s[i]]
+    fileName = "acgt2ternary.pkl"
+    create_Pickle(fileName,t)
     return t
