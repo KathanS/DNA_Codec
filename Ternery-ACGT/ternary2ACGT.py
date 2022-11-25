@@ -1,3 +1,4 @@
+from Pickle.extractData import *
 first = {'0':'A', '1':'C', '2':'G'}
 map = {
     'A': {'0':'C','1':'G','2':'T'},
@@ -6,10 +7,11 @@ map = {
     'T': {'0':'A','1':'C','2':'G'}
 }
 
-def ternary2acgt(s: str):
+def ternary2acgt(s: str,secretCode):
     dna = first[s[0]]
     for i in range(1, len(s)):
         dna = dna + map[dna[-1]][s[i]]
-    fileName = "ternary2acgt.pkl"
-    create_Pickle(fileName,dna)
+    fileName = "ternary2acgt"
+    filName+=secretCode+".pkl"
+    create_pickle(fileName,dna)
     return dna

@@ -1,5 +1,5 @@
-from Pickle import *
 # A Huffman Tree Node
+from Pickle.extractData import *
 class Node:
     def __init__(self, freq, symbol, left=None, right=None):
         # freqability of symbol

@@ -1,11 +1,11 @@
 import matlab.engine
-
+from Pickle.extractData import *
 eng = matlab.engine.start_matlab()
 eng.cd('Polar', nargout=1)
 
 
 
-def encode(bits):
+def encode(bits,secretCode):
     # Polar encoding
     # bits: input bits
     # return: encoded bits
@@ -13,13 +13,14 @@ def encode(bits):
     encoded_output = eng.encodePolar(matlab.int8(input_text),nargout=1)
     encoded_output =[[int(num) for num in x] for x in encoded_output]
     print(encoded_output)
-    fileName = "polarEncoder.pkl"
-    extactData.create_Pickle(fileName,encoded_output)
+    fileName = "polarEncoder"
+    fileName+=secretCode+".pkl"
+    create_pickle(fileName,encoded_output)
     eng.quit()
     return encoded_output
    
 
-def decode(bits):
+def decode(bits,secretCode):
     # Polar decoding
     # bits: input bits
     # return: decoded bits
@@ -28,8 +29,9 @@ def decode(bits):
     decoded_output = eng.decodePolar(matlab.int8(input_text),nargout=1)
     decoded_output =[[int(num) for num in x] for x in decoded_output]
     print(decoded_output)
-    fileName = "polarDecoder.pkl"
-    extactData.create_Pickle(fileName,decoded_output)
+    fileName = "polarDecoder"
+    fileName+=secretCode+ ".pkl"
+    create_pickle(fileName,decoded_output)
     eng.quit()
     return decoded_output
     
