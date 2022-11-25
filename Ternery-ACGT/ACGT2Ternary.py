@@ -7,12 +7,15 @@ map = {
     'T': {'A':'0','C':'1','G':'2'}
 }
 
-def acgt2ternary(s: str,secretCode):
+def acgt2ternary(secretCode):
     t = first[s[0]]
+    fileName1 = "ternary2acgt"
+    filName1+=secretCode+".pkl"
+    s=extract_pickle(fileName1)
     for i in range(1, len(s)):
         t = t + map[s[i-1]][s[i]]
-    fileName = "acgt2ternary"
-
-    fileName+=secretCode+".pkl"
-    create_pickle(fileName,t)
+    fileName2 = "acgt2ternary"
+    fileName2+=secretCode+".pkl"
+    create_pickle(fileName2,t)
+    
     return t

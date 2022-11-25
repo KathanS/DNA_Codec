@@ -87,38 +87,18 @@ def Huffman_Encoding(data):
     return encoded_output, nodes[0]  
     
  
-def Huffman_Decoding(encoded_data, huffman_tree):
-    tree_head = huffman_tree
-    decoded_output = []
-    for x in encoded_data:
-        if x == '1':
-            huffman_tree = huffman_tree.right   
-        elif x == '0':
-            huffman_tree = huffman_tree.left
-        try:
-            if huffman_tree.left.symbol == None and huffman_tree.right.symbol == None:
-                pass
-        except AttributeError:
-            decoded_output.append(huffman_tree.symbol)
-            huffman_tree = tree_head
-        
-    string = ''.join([str(item) for item in decoded_output])
-    return string        
+   
 
 
-""" First Test """
-data = "AAAAAAABCCCCCCDDEEEEE"
-print(data)
-encoding, tree = Huffman_Encoding(data)
-fileName = "Huffman_encoder.pkl"
-create_pickle(fileName,encoding)
-print("Encoded output", encoding)
-print("Decoded Output", Huffman_Decoding(encoding,tree))
+def Huffman_encoding(data,secretCode):
+
+    encoding, tree = Huffman_Encoding(data)
+    fileName1 = "Huffman_encoder"
+    fileName1+=secretCode+".pkl"
+    create_pickle(fileName1,encoding)
+    fileName2 = "Huffman_encoder_tree"
+    fileName2+=secretCode+".pkl"
+    create_pickle(fileName2,encoding)
+    return encoding
 
 
-""" Second Test """
-# f = open("demofile.txt", "r")
-
-# data = f.read()
-# print(data)
-# Huffman_Encoding(data)
