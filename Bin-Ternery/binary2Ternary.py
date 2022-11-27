@@ -1,9 +1,9 @@
 
 from Pickle.extractData import *
 def binary2ternary(secretCode):
-    fileName1 = "pgpencryption"
+    fileName1 = "ascii2bin_"
     fileName1 += secretCode+".pkl"
-    s= extract_pickle(fileName1)
+    s = extract_pickle(fileName1)
     t = f'{s[0]}'
     for i in range(1,len(s)):
         t += str(int(s[i])+int(s[i-1]))
