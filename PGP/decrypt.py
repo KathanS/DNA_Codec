@@ -7,9 +7,12 @@ def decryptData(secretCode):
     # unencrypted_string = 'Who are you? How did you get in my house?'
     # encrypted_data = gpg.encrypt(unencrypted_string, '201901026@daiict.ac.in')
     # encrypted_string = str(encrypted_data)
-    fileName1 = "polarDecoder"
-    fileName1+=secretCode+ ".pkl"
+    fileName1 = "binary2ascii"
+    fileName1+=secretCode+".pkl"
     encrypted_string = extract_pickle(fileName1)
+    #fileName1 = "polarDecoder"
+    #fileName1+=secretCode+ ".pkl"
+    #encrypted_string = extract_pickle(fileName1)
     decrypted_data = gpg.decrypt(encrypted_string)
     decrypted_string=str(decrypted_data)
     fileName2 = "pgpdecryption"
