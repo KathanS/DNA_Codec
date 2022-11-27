@@ -1,3 +1,5 @@
+from Pickle.extractData import *
+
 def ascii_2_binary(secretCode):
     fileName1 = "pgpencryption_"
     fileName1 += secretCode+".pkl"
