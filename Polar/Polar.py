@@ -26,9 +26,10 @@ def decode(secretCode):
     # Polar decoding
     # bits: input bits
     # return: decoded bits
-    fileName1 = "ternary2binary"
-    fileName1+=secretCode+".pkl"
-    bits= extract_pickle(fileName1)
+    fileName1 = "pgpdecryption"
+    fileName1 += secretCode+".pkl"
+    bits = extract_pickle(fileName1)
+    
     eng = matlab.engine.start_matlab()
     input_text= bits
     decoded_output = eng.decodePolar(matlab.int8(input_text),nargout=1)
