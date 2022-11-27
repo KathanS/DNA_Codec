@@ -5,9 +5,10 @@ def Huffman_Decoding(secretCode):
     fileName1 = "Huffman_encoder_tree"
     fileName1+=secretCode+".pkl"
     huffman_tree = extract_pickle(fileName1)
-    fileName2 = "pgpdecryption"
-    fileName2 += secretCode+".pkl"
+    fileName2 = "polarDecoder"
+    fileName2+=secretCode+ ".pkl"
     encoded_data = extract_pickle(fileName2)
+    
     decoded_output = []
     for x in encoded_data:
         if x == '1':
