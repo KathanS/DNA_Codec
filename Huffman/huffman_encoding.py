@@ -1,5 +1,11 @@
 # A Huffman Tree Node
+# Adding current folder to the system path
+import os
+import sys
+sys.path.insert(1, os.getcwd())
+
 from Pickle.extractData import *
+
 class Node:
     def __init__(self, freq, symbol, left=None, right=None):
         # freqability of symbol
@@ -47,7 +53,6 @@ def Output_Encoded(data, coding):
     for c in data:
       #  print(coding[c], end = '')
         encoding_output.append(coding[c])
-        
     string = ''.join([str(item) for item in encoding_output])    
     return string
         
@@ -64,6 +69,8 @@ def Huffman_Encoding(data):
     for symbol in symbols:
         nodes.append(Node(symbol_with_freqs.get(symbol), symbol))
     
+    print(nodes)
+
     while len(nodes) > 1:
         # sort all the nodes in ascending order based on their frequency
         nodes = sorted(nodes, key=lambda x: x.freq)
@@ -80,25 +87,27 @@ def Huffman_Encoding(data):
         nodes.remove(left)
         nodes.remove(right)
         nodes.append(newNode)
-            
+    
+    print(nodes)
     huffman_encoding = Calculate_Codes(nodes[0])
     print("symbols with codes", huffman_encoding)
-    encoded_output = Output_Encoded(data,huffman_encoding)
+    encoded_output = Output_Encoded(data, huffman_encoding)
     return encoded_output, nodes[0]  
-    
- 
-   
 
-
-def Huffman_encoding(data,secretCode):
+def Huffman_encoding(data,secretCode:str):
 
     encoding, tree = Huffman_Encoding(data)
     fileName1 = "Huffman_encoder"
-    fileName1+=secretCode+".pkl"
+    fileName1 += secretCode + ".pkl"
     create_pickle(fileName1,encoding)
+    
     fileName2 = "Huffman_encoder_tree"
-    fileName2+=secretCode+".pkl"
+    fileName2 += secretCode+".pkl"
     create_pickle(fileName2,encoding)
+    print(encoding)
     return encoding
 
 
+if __name__ == "__main__":
+    out = Huffman_encoding("Hello world", "12345")
+    print(out)
