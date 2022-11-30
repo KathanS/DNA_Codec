@@ -1,6 +1,23 @@
 % Setup code parameters
 
-function [output_encoded_bits]=encodePolar(input_bits,f,A,k)
+function [output_encoded_bits, f, A, k]=encodePolar(input_bits)
+    n = 12; N = 2^n;
+    e = 0.1; p = 0.1;
+    d = 0.5; bec = 0; % as you increase d rate increases! but also rate of error, although for no channel error rate = 0 always!
+    
+    % Compute the quality of all effective channels
+    if (bec)
+        [biterrd] = polar_bec(n,e);
+    else
+        [biterrd] = polar_bsc(n,p,1000);
+    end
+    
+    % Design polar code
+    f = polar_design(biterrd,d);
+    A = (f==1/2);
+    k = sum(A);
+    rate = k/N;
+
     input_length = size(input_bits,2);
     
     if (mod(input_length,k) ~= 0)

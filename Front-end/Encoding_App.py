@@ -37,9 +37,9 @@ def main():
     print(polar)
     PGP = encrypt_data(secret_code)
     print(PGP)
-    #Ternery = binary2ternary(secret_code)
+    Ternery = binary2ternary(secret_code)
     print(Ternery)
-    #ACGT = ternary2acgt(secret_code)
+    ACGT = ternary2acgt(secret_code)
     print(ACGT)
     
     put_markdown('# Final DNA String')
