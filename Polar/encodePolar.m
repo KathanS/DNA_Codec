@@ -34,4 +34,9 @@ function [output_encoded_bits, f, A, k]=encodePolar(input_bits)
         y = x; % no channel
         output_encoded_bits=x;
     end
+
+    secret_code = fileread('encode_code.txt');
+    fileName = append(secret_code, ".mat");
+    save(fileName)
+    
 end

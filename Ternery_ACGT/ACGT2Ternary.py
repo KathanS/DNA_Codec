@@ -8,10 +8,10 @@ map = {
 }
 
 def acgt2ternary(secretCode):
-    t = first[s[0]]
     fileName1 = "ternary2acgt"
-    filName1+=secretCode+".pkl"
+    fileName1+=secretCode+".pkl"
     s=extract_pickle(fileName1)
+    t = first[s[0]]
     for i in range(1, len(s)):
         t = t + map[s[i-1]][s[i]]
     fileName2 = "acgt2ternary"

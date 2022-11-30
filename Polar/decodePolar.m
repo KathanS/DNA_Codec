@@ -1,6 +1,9 @@
 % Setup code parameters
 
-function [output_decoded_bits]=decodePolar(encoded_bits,f,A,k)
+function [output_decoded_bits]=decodePolar(encoded_bits)
+    secret_code = fileread('decode_code.txt');
+    fileName = append(secret_code, ".mat");
+    load(fileName)
     len = size(f,2);
     encoded_len = size(encoded_bits,2);
     for i=1:encoded_len/len

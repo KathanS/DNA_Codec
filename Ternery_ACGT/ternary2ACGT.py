@@ -7,14 +7,14 @@ map = {
     'T': {'0':'A','1':'C','2':'G'}
 }
 
-def ternary2acgt(s: str,secretCode):
-    dna = first[s[0]]
+def ternary2acgt(secretCode):
     fileName1 = "binary2ternary"
     fileName1+=secretCode+".pkl"
     s=extract_pickle(fileName1)
+    dna = first[s[0]]
     for i in range(1, len(s)):
         dna = dna + map[dna[-1]][s[i]]
     fileName2 = "ternary2acgt"
-    filName2+=secretCode+".pkl"
+    fileName2 +=secretCode+".pkl"
     create_pickle(fileName2,dna)
     return dna

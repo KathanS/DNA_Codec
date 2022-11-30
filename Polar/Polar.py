@@ -22,8 +22,7 @@ def encode(secretCode):
     for i in range(len(input_text)):
         input_t.append(ord(input_text[i]) - ord('0'))
     
-    encoded_output,f,A,k = eng.encodePolar(matlab.int8(input_t),nargout=4)
-    print(encoded_output)
+    encoded_output = eng.encodePolar(matlab.int8(input_t),nargout=4)
     encoded_output =[[int(num) for num in x] for x in encoded_output]
     #print(encoded_output)
     fileName2 = "polarEncoder"
@@ -42,10 +41,29 @@ def decode(secretCode):
     bits= extract_pickle(fileName1)
     eng = matlab.engine.start_matlab()
     input_text= bits
+    
     # f=
     # k=
     # A=
-    decoded_output = eng.decodePolar(matlab.int8(input_text),nargout=1)
+
+    input_list = [int(x) for x in input_text]
+
+    print(input_list)
+
+    fileName1 = "Huffman_encoder"
+    fileName1+=secretCode+".pkl"
+    input_text= extract_pickle(fileName1)
+
+    input_t = []
+    for i in range(len(input_text)):
+        input_t.append(ord(input_text[i]) - ord('0'))
+    
+    print(input_t)
+
+    encoded_output = eng.encodePolar(matlab.int8(input_t),nargout=4)
+    
+
+    decoded_output = eng.encodePolar(matlab.int8(input_list), nargout=1)
     decoded_output =[[int(num) for num in x] for x in decoded_output]
     #print(decoded_output)
     
