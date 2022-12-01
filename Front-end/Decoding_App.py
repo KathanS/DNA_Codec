@@ -25,7 +25,7 @@ def main():
     ACGT = input("Text")
     secret_code = input("Secret Code")
 
-    secret_code = "xDknQe6556"
+    secret_code = "H"
     f = open("Polar/decode_code.txt", "w")
     f.write(secret_code)
     f.close()

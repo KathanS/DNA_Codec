@@ -1,6 +1,6 @@
 % Setup code parameters
 
-function [output_encoded_bits, f, A, k]=encodePolar(input_bits)
+function [output_encoded_bits]=encodePolar(input_bits)
     n = 12; N = 2^n;
     e = 0.1; p = 0.1;
     d = 0.5; bec = 0; % as you increase d rate increases! but also rate of error, although for no channel error rate = 0 always!
