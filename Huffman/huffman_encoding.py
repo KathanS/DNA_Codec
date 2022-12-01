@@ -103,11 +103,16 @@ def Huffman_encoding(data,secretCode:str):
     
     fileName2 = "Huffman_encoder_tree"
     fileName2 += secretCode+".pkl"
-    create_pickle(fileName2,encoding)
+    create_pickle(fileName2,tree)
+    
+    huffman_tree = extract_pickle(fileName2)
+
+    print(type(huffman_tree))
+
     print(encoding)
     return encoding
 
 
 if __name__ == "__main__":
-    out = Huffman_encoding("Hello world", "12345")
+    out = Huffman_encoding("Hello world", "LaBFSP5338")
     print(out)

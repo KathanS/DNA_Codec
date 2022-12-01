@@ -6,6 +6,7 @@ function [output_decoded_bits]=decodePolar(encoded_bits)
     load(fileName)
     len = size(f,2);
     encoded_len = size(encoded_bits,2);
+    output_decoded_bits = zeros(1,2);
     for i=1:encoded_len/len
         disp(i);
         % Decode and compute error rate for info bits
@@ -14,4 +15,6 @@ function [output_decoded_bits]=decodePolar(encoded_bits)
         output_decoded_bits(:,(k*(i-1)+1):(k*i)) = uhat(A);
         %biterr(i) = mean(uhat(A)~=u(A));
     end
+    disp(encoded_len);
+    disp(len);
 end

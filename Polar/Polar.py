@@ -22,6 +22,9 @@ def encode(secretCode):
     for i in range(len(input_text)):
         input_t.append(ord(input_text[i]) - ord('0'))
     
+    print(matlab.int8(input_t))
+    print(type(input_t[0]))
+
     encoded_output = eng.encodePolar(matlab.int8(input_t),nargout=1)
     encoded_output =[[int(num) for num in x] for x in encoded_output]
     #print(encoded_output)
@@ -36,30 +39,23 @@ def decode(secretCode):
     # Polar decoding
     # bits: input bits
     # return: decoded bits
-    # fileName1 = "ternary2binary"
-    # fileName1+=secretCode+".pkl"
-    # bits= extract_pickle(fileName1)
-    # eng = matlab.engine.start_matlab()
-    input_text = "1011"
+    fileName1 = "pgpdecryption"
+    fileName1+=secretCode+".pkl"
+    bits= extract_pickle(fileName1)
     
-    # f=
-    # k=
-    # A=
-
-    input_list = [int(x) for x in input_text]
-
-    print(input_list)
-
-    decoded_output = eng.decodePolar(matlab.int8(input_list), nargout=1)
+    input_t = [int(x) for x in bits]
+    print(input_t)
+    decoded_output = eng.decodePolar(matlab.double(input_t),nargout=1)
     decoded_output =[[int(num) for num in x] for x in decoded_output]
-    #print(decoded_output)
+    print(decoded_output)
     
     fileName2 = "polarDecoder"
     fileName2+=secretCode+ ".pkl"
     create_pickle(fileName2,decoded_output)
     eng.quit()
+    print(decoded_output)
     return decoded_output
 
 if __name__ == "__main__":
-    out = decode("12345")
+    out = decode("LaBFSP5338")
     # print(out)
