@@ -52,7 +52,6 @@ def decode(secretCode):
     fileName2 = "polarDecoder"
     fileName2+=secretCode+ ".pkl"
     create_pickle(fileName2,decoded_output)
-    eng.quit()
     print(decoded_output)
     return decoded_output
 
