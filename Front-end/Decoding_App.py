@@ -91,5 +91,5 @@ def main():
     put_text(org, scope='scrollable7')
     
 
-if __name__ == '__main__':
-    main()
+
+start_server(main, port=8081, remote_access=True,debug=True)
